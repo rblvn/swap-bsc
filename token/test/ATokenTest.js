@@ -3,12 +3,12 @@ const { ethers } = require("hardhat");
 
 describe("AToken", function () {
   it("Should return owner of a token", async function () {
-    const {owner}  = await ethers.getSigners();
+    const [owner]  = await ethers.getSigners();
     const AToken = await ethers.getContractFactory("AToken");
-    const atoken = await AToken.deploy("Hello, world!");
+    const atoken = await AToken.deploy();
     await atoken.deployed();
-    const owneradress = await atoken.owner();
+    const owneraddress = await atoken.owner();
 
-    expect(owneradress).to.equal(owner.adress);
+    expect(owneraddress).to.equal(owner.address);
   });
 });
